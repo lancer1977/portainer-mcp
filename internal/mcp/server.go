@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
@@ -15,8 +16,8 @@ import (
 const (
 	// MinimumToolsVersion is the minimum supported version of the tools.yaml file
 	MinimumToolsVersion = "1.0"
-	// SupportedPortainerVersion is the version of Portainer that is supported by this tool
-	SupportedPortainerVersion = "2.31.2"
+	// SupportedPortainerVersionPrefix is the version prefix of Portainer that is supported by this tool
+	SupportedPortainerVersionPrefix = "2.33."
 )
 
 // PortainerClient defines the interface for the wrapper client used by the MCP server
@@ -163,8 +164,8 @@ func NewPortainerMCPServer(serverURL, token, toolsPath string, options ...Server
 			return nil, fmt.Errorf("failed to get Portainer server version: %w", err)
 		}
 
-		if version != SupportedPortainerVersion {
-			return nil, fmt.Errorf("unsupported Portainer server version: %s, only version %s is supported", version, SupportedPortainerVersion)
+		if !strings.HasPrefix(version, SupportedPortainerVersionPrefix) {
+			return nil, fmt.Errorf("unsupported Portainer server version: %s, only versions %sX are supported", version, SupportedPortainerVersionPrefix)
 		}
 	}
 

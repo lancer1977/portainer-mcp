@@ -31,7 +31,17 @@ func TestNewPortainerMCPServer(t *testing.T) {
 			token:     "valid-token",
 			toolsPath: validToolsPath,
 			mockSetup: func(m *MockPortainerClient) {
-				m.On("GetVersion").Return(SupportedPortainerVersion, nil)
+				m.On("GetVersion").Return(SupportedPortainerVersionPrefix+"0", nil)
+			},
+			expectError: false,
+		},
+		{
+			name:      "successful initialization with supported version 2.33.7",
+			serverURL: "https://portainer.example.com",
+			token:     "valid-token",
+			toolsPath: validToolsPath,
+			mockSetup: func(m *MockPortainerClient) {
+				m.On("GetVersion").Return("2.33.7", nil)
 			},
 			expectError: false,
 		},
