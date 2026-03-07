@@ -65,6 +65,24 @@ This will extract the `portainer-mcp` executable.
 **Move the executable:**
 Move the executable to a location in your `$PATH` (e.g., `/usr/local/bin`) or note its location for the configuration step below.
 
+### Building from Source
+
+If you prefer to build from source:
+
+```bash
+# Clone the repository
+git clone https://github.com/portainer/portainer-mcp.git
+cd portainer-mcp
+
+# Build
+make build
+
+# The binary will be at: dist/portainer-mcp
+```
+
+> [!NOTE]
+> The repository no longer tracks the built binary. After cloning, you must run `make build` to generate the binary. Alternatively, use the GitHub Releases for pre-built binaries.
+
 # Usage
 
 With Claude Desktop, configure it like so:
