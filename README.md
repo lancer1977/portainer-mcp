@@ -314,3 +314,7 @@ Next, use the `token.sh` script to send these tool definitions along with a samp
 The script will output the JSON response from the Anthropic API, which includes the estimated token count for the provided tools and sample message under the `usage.input_tokens` field.
 
 This process helps in understanding the token cost associated with the toolset provided to the language model.
+
+## Claude Code skill
+
+A packaged Claude Code skill for this server lives at [`skills/portainer-mcp/SKILL.md`](skills/portainer-mcp/SKILL.md). It documents installation, MCP registration flags, and the tool surface for AI-assistant use. It was migrated from `lancer1977/dev-forge` as part of that repo's retirement (see [lancer1977/dev-forge#2613](https://github.com/lancer1977/dev-forge/issues/2613)) and rewritten to match this repo's actual Go implementation and build contract.
